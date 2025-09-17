@@ -1,0 +1,37 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "fasp",
+      "camelcase": "Fasp",
+      "title": "Fasp",
+      "scope": "source.fasp",
+      "file-types": [
+        "lp"
+      ],
+      "injection-regex": "^fasp$",
+      "class-name": "TreeSitterFasp"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "license": "MIT",
+    "description": "Fasp grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Jorge Fandinno Kaminski"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/potassco/tree-sitter-fasp"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": false
+  }
+}
