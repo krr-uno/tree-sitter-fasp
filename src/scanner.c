@@ -7,6 +7,7 @@
 
 enum TokenType {
     COLON_DASH,
+    COLON_ASSIGN,
     COLON,
 };
 
@@ -56,9 +57,14 @@ static inline Action state_colon_seen(TSLexer *lexer, const bool *valid_symbols,
         advance(lexer);
         return RETURN_TOKEN;
     }
+    if (lexer->lookahead == '=') {
+        lexer->result_symbol = COLON_ASSIGN;
+        advance(lexer);
+        return RETURN_TOKEN;
+    }
     if (valid_symbols[COLON]) {
-            lexer->result_symbol = COLON;
-            return RETURN_TOKEN;
+        lexer->result_symbol = COLON;
+        return RETURN_TOKEN;
     }
     return FAIL;
 }

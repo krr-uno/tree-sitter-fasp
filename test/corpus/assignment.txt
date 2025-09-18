@@ -1,0 +1,111 @@
+==================
+basic assignment
+==================
+
+a := 1.
+
+---
+
+(source_file
+  (statement
+    (assignment_rule
+      (simple_assignment
+        (term
+          (function
+            (identifier)))
+        (term
+          (number))))))
+
+==================
+aggregate assignment
+==================
+
+a := #sum {X,Y: p(X,Y), q(X), not r(Y)}.
+
+---
+
+(source_file
+  (statement
+    (assignment_rule
+      (aggregate_assignment
+        (term
+          (function
+            (identifier)))
+        (aggregate_assignment_aggregate
+          (aggregate_function)
+          (body_aggregate_elements
+            (body_aggregate_element
+              (terms
+                (term
+                  (variable))
+                (term
+                  (variable)))
+              (literal_tuple
+                (literal
+                  (symbolic_atom
+                    (identifier)
+                    (pool
+                      (terms
+                        (term
+                          (variable))
+                        (term
+                          (variable))))))
+                (literal
+                  (symbolic_atom
+                    (identifier)
+                    (pool
+                      (terms
+                        (term
+                          (variable))))))
+                (literal
+                  (sign
+                    (default_negation))
+                  (symbolic_atom
+                    (identifier)
+                    (pool
+                      (terms
+                        (term
+                          (variable))))))))))))))
+
+==================
+choice assignment
+==================
+
+a in {X,Y: p(X,Y), not q(X)}.
+
+---
+
+(source_file
+  (statement
+    (assignment_rule
+      (choice_assignment
+        (term
+          (function
+            (identifier)))
+        (choice_assignment_aggregate
+          (body_aggregate_elements
+            (body_aggregate_element
+              (terms
+                (term
+                  (variable))
+                (term
+                  (variable)))
+              (literal_tuple
+                (literal
+                  (symbolic_atom
+                    (identifier)
+                    (pool
+                      (terms
+                        (term
+                          (variable))
+                        (term
+                          (variable))))))
+                (literal
+                  (sign
+                    (default_negation))
+                  (symbolic_atom
+                    (identifier)
+                    (pool
+                      (terms
+                        (term
+                          (variable))))))))))))))

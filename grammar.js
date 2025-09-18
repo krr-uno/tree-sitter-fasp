@@ -7,6 +7,7 @@ module.exports = grammar(clingo, {
 
     externals: $ => [
         ":-",
+        ":=",
         ":",
     ],
     
@@ -21,5 +22,10 @@ module.exports = grammar(clingo, {
         _head_assignment: $ => choice($.simple_assignment, $.aggregate_assignment, $.choice_assignment),
 
         assignment_rule: $ => seq($._head_assignment, choice(".", seq(":-", $.body))),
+
+        statement: ($, original) => choice(
+            $.assignment_rule,
+            ...original.members,
+        ),
     }
 });
