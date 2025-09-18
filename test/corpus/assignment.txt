@@ -106,7 +106,7 @@ a := #sum {X,Y: p(X,Y), q(X), not r(Y)}.
 choice assignment
 ==================
 
-a in {X,Y: p(X,Y), not q(X)}.
+a in {X,Y: p(X,Y), not in(X)}.
 
 ---
 
