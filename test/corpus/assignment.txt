@@ -17,6 +17,41 @@ a := 1.
           (number))))))
 
 ==================
+basic assignment rule
+==================
+
+a(X) := f(Y) :- b(X).
+
+---
+
+(source_file
+  (statement
+    (assignment_rule
+      (simple_assignment
+        (term
+          (function
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (variable))))))
+        (term
+          (function
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (variable)))))))
+      (body
+        (body_literal
+          (symbolic_atom
+            (identifier)
+            (pool
+              (terms
+                (term
+                  (variable))))))))))
+
+==================
 aggregate assignment
 ==================
 
