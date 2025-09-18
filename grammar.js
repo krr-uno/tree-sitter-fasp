@@ -1,5 +1,3 @@
-
-
 const clingo = require('tree-sitter-clingo/grammar');
 
 module.exports = grammar(clingo, {
