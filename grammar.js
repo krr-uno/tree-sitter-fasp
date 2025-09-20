@@ -22,6 +22,9 @@ module.exports = grammar(clingo, {
             field("assignment", $.simple_assignment),
             field("condition", optional($._condition))
         ),
+        // This precedence is needed to avoid conflicts with set_aggregate_element in the clingo grammar
+        // If no assignment is present, we prefer a regular clingo choice;
+        // only when at least one assignment is present, we consider it a choice assignment
         _choice_assignment_element : $ => prec(-1,choice(
             $.choice_assignment_element,
             $.set_aggregate_element
