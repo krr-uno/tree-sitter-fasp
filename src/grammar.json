@@ -4468,7 +4468,24 @@
         }
       ]
     },
-    "aggregate_assignment_aggregate": {
+    "simple_assignment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "term"
+        },
+        {
+          "type": "STRING",
+          "value": ":="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "term"
+        }
+      ]
+    },
+    "_aggregate_assignment": {
       "type": "SEQ",
       "members": [
         {
@@ -4497,7 +4514,24 @@
         }
       ]
     },
-    "choice_assignment_aggregate": {
+    "aggregate_assignment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "term"
+        },
+        {
+          "type": "STRING",
+          "value": ":="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_aggregate_assignment"
+        }
+      ]
+    },
+    "_choice_some_assignment": {
       "type": "SEQ",
       "members": [
         {
@@ -4514,7 +4548,7 @@
         }
       ]
     },
-    "simple_assignment": {
+    "choice_some_assignment": {
       "type": "SEQ",
       "members": [
         {
@@ -4523,28 +4557,82 @@
         },
         {
           "type": "STRING",
-          "value": ":="
+          "value": "#some"
         },
         {
           "type": "SYMBOL",
-          "name": "term"
+          "name": "_choice_some_assignment"
         }
       ]
     },
-    "aggregate_assignment": {
+    "choice_assignment_element": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "assignment",
+          "content": {
+            "type": "SYMBOL",
+            "name": "simple_assignment"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_condition"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "choice_assignment_elements": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "term"
+          "name": "choice_assignment_element"
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ";"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "choice_assignment_element"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "_choice_assignment": {
+      "type": "SEQ",
+      "members": [
+        {
           "type": "STRING",
-          "value": ":="
+          "value": "{"
         },
         {
           "type": "SYMBOL",
-          "name": "aggregate_assignment_aggregate"
+          "name": "choice_assignment_elements"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },
@@ -4552,16 +4640,32 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "term"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lower"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
-          "type": "STRING",
-          "value": "in"
+          "type": "SYMBOL",
+          "name": "_choice_assignment"
         },
         {
-          "type": "SYMBOL",
-          "name": "choice_assignment_aggregate"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "upper"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -4575,6 +4679,10 @@
         {
           "type": "SYMBOL",
           "name": "aggregate_assignment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "choice_some_assignment"
         },
         {
           "type": "SYMBOL",

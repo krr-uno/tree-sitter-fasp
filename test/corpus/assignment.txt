@@ -66,7 +66,6 @@ a := #sum {X,Y: p(X,Y), q(X), not r(Y)}.
         (term
           (function
             (identifier)))
-        (aggregate_assignment_aggregate
           (aggregate_function)
           (body_aggregate_elements
             (body_aggregate_element
@@ -100,24 +99,23 @@ a := #sum {X,Y: p(X,Y), q(X), not r(Y)}.
                     (pool
                       (terms
                         (term
-                          (variable))))))))))))))
+                          (variable)))))))))))))
 
 ==================
 choice assignment
 ==================
 
-a in {X,Y: p(X,Y), not in(X)}.
+a #some{X,Y: p(X,Y), not in(X)}.
 
 ---
 
 (source_file
   (statement
     (assignment_rule
-      (choice_assignment
+      (choice_some_assignment
         (term
           (function
             (identifier)))
-        (choice_assignment_aggregate
           (body_aggregate_elements
             (body_aggregate_element
               (terms
@@ -143,4 +141,4 @@ a in {X,Y: p(X,Y), not in(X)}.
                     (pool
                       (terms
                         (term
-                          (variable))))))))))))))
+                          (variable)))))))))))))

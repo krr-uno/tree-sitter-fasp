@@ -23,30 +23,15 @@
       "required": true,
       "types": [
         {
-          "type": "aggregate_assignment_aggregate",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "aggregate_assignment_aggregate",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
           "type": "aggregate_function",
           "named": true
         },
         {
           "type": "body_aggregate_elements",
+          "named": true
+        },
+        {
+          "type": "term",
           "named": true
         }
       ]
@@ -75,6 +60,10 @@
         },
         {
           "type": "choice_assignment",
+          "named": true
+        },
+        {
+          "type": "choice_some_assignment",
           "named": true
         },
         {
@@ -300,26 +289,79 @@
       "required": true,
       "types": [
         {
-          "type": "choice_assignment_aggregate",
+          "type": "choice_assignment_elements",
           "named": true
         },
         {
-          "type": "term",
+          "type": "lower",
+          "named": true
+        },
+        {
+          "type": "upper",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "choice_assignment_aggregate",
+    "type": "choice_assignment_element",
+    "named": true,
+    "fields": {
+      "assignment": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "simple_assignment",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "literal_tuple",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "choice_assignment_elements",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "choice_assignment_element",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "choice_some_assignment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "body_aggregate_elements",
+          "named": true
+        },
+        {
+          "type": "term",
           "named": true
         }
       ]
@@ -2041,6 +2083,10 @@
     "named": false
   },
   {
+    "type": "#some",
+    "named": false
+  },
+  {
     "type": "#sum",
     "named": false
   },
@@ -2216,10 +2262,6 @@
   {
     "type": "identifier",
     "named": true
-  },
-  {
-    "type": "in",
-    "named": false
   },
   {
     "type": "left",
