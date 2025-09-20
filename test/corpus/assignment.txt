@@ -66,40 +66,40 @@ a := #sum {X,Y: p(X,Y), q(X), not r(Y)}.
         (term
           (function
             (identifier)))
-          (aggregate_function)
-          (body_aggregate_elements
-            (body_aggregate_element
-              (terms
-                (term
-                  (variable))
-                (term
-                  (variable)))
-              (literal_tuple
-                (literal
-                  (symbolic_atom
-                    (identifier)
-                    (pool
-                      (terms
-                        (term
-                          (variable))
-                        (term
-                          (variable))))))
-                (literal
-                  (symbolic_atom
-                    (identifier)
-                    (pool
-                      (terms
-                        (term
-                          (variable))))))
-                (literal
-                  (sign
-                    (default_negation))
-                  (symbolic_atom
-                    (identifier)
-                    (pool
-                      (terms
-                        (term
-                          (variable)))))))))))))
+        (aggregate_function)
+        (body_aggregate_elements
+          (body_aggregate_element
+            (terms
+              (term
+                (variable))
+              (term
+                (variable)))
+            (literal_tuple
+              (literal
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable))
+                      (term
+                        (variable))))))
+              (literal
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable))))))
+              (literal
+                (sign
+                  (default_negation))
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable)))))))))))))
 
 ==================
 choice assignment
@@ -116,29 +116,73 @@ a #some{X,Y: p(X,Y), not in(X)}.
         (term
           (function
             (identifier)))
-          (body_aggregate_elements
-            (body_aggregate_element
-              (terms
-                (term
-                  (variable))
-                (term
-                  (variable)))
-              (literal_tuple
-                (literal
-                  (symbolic_atom
-                    (identifier)
-                    (pool
-                      (terms
-                        (term
-                          (variable))
-                        (term
-                          (variable))))))
-                (literal
-                  (sign
-                    (default_negation))
-                  (symbolic_atom
-                    (identifier)
-                    (pool
-                      (terms
-                        (term
-                          (variable)))))))))))))
+        (body_aggregate_elements
+          (body_aggregate_element
+            (terms
+              (term
+                (variable))
+              (term
+                (variable)))
+            (literal_tuple
+              (literal
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable))
+                      (term
+                        (variable))))))
+              (literal
+                (sign
+                  (default_negation))
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable)))))))))))))
+
+==================
+general choice assignment
+==================
+
+{ f(X):= Y : p(X,Y), not in(X)}.
+
+---
+
+(source_file
+  (statement
+    (assignment_rule
+      (choice_assignment
+        (choice_assignment_elements
+          (choice_assignment_element
+            (simple_assignment
+              (term
+                (function
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable))))))
+              (term
+                (variable)))
+            (literal_tuple
+              (literal
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable))
+                      (term
+                        (variable))))))
+              (literal
+                (sign
+                  (default_negation))
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable)))))))))))))
