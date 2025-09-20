@@ -4594,12 +4594,29 @@
         }
       ]
     },
+    "_choice_assignment_element": {
+      "type": "PREC",
+      "value": -1,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "choice_assignment_element"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "set_aggregate_element"
+          }
+        ]
+      }
+    },
     "choice_assignment_elements": {
       "type": "SEQ",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "choice_assignment_element"
+          "name": "_choice_assignment_element"
         },
         {
           "type": "REPEAT",
@@ -4612,7 +4629,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "choice_assignment_element"
+                "name": "_choice_assignment_element"
               }
             ]
           }

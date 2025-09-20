@@ -147,7 +147,7 @@ a #some{X,Y: p(X,Y), not in(X)}.
 general choice assignment
 ==================
 
-{ f(X):= Y : p(X,Y), not in(X) }.
+{ f(X) := Y : p(X,Y), not in(X) }.
 
 ---
 
@@ -186,3 +186,67 @@ general choice assignment
                     (terms
                       (term
                         (variable)))))))))))))
+
+==================
+general choice assignment 2
+==================
+
+{ f(X) := Y : p(X,Y), not in(X) ; q(X) : r(X) } = 1.
+
+---
+
+(source_file
+  (statement
+    (assignment_rule
+      (choice_assignment
+        (choice_assignment_elements
+          (choice_assignment_element
+            (simple_assignment
+              (term
+                (function
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable))))))
+              (term
+                (variable)))
+            (literal_tuple
+              (literal
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable))
+                      (term
+                        (variable))))))
+              (literal
+                (sign
+                  (default_negation))
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable))))))))
+          (set_aggregate_element
+            (literal
+              (symbolic_atom
+                (identifier)
+                (pool
+                  (terms
+                    (term
+                      (variable))))))
+            (literal_tuple
+              (literal
+                (symbolic_atom
+                  (identifier)
+                  (pool
+                    (terms
+                      (term
+                        (variable)))))))))
+        (upper
+          (relation)
+          (term
+            (number)))))))

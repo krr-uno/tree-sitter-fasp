@@ -20,12 +20,21 @@ module.exports = grammar(clingo, {
 
         choice_assignment_element: $ => seq(
             field("assignment", $.simple_assignment),
-            field("condition", optional($._condition))),
-        choice_assignment_elements: $ => seq($.choice_assignment_element, repeat(seq(";", $.choice_assignment_element))),
+            field("condition", optional($._condition))
+        ),
+        _choice_assignment_element : $ => prec(-1,choice(
+            $.choice_assignment_element,
+            $.set_aggregate_element
+        )),
+        choice_assignment_elements: $ => seq($._choice_assignment_element, repeat(seq(";", $._choice_assignment_element))),
         _choice_assignment: $ => seq("{", $.choice_assignment_elements, "}"),
         choice_assignment: $ => seq(optional($.lower), $._choice_assignment, optional($.upper)),
 
         _head_assignment: $ => choice($.simple_assignment, $.aggregate_assignment, $.choice_some_assignment, $.choice_assignment),
+
+        head: ($, original) => choice(
+            ...original.members.filter((member) => member.content?.name != 'set_aggregate'),
+        ),
 
         assignment_rule: $ => seq($._head_assignment, choice(".", seq(":-", $.body))),
 
