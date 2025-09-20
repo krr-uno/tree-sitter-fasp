@@ -147,7 +147,7 @@ a #some{X,Y: p(X,Y), not in(X)}.
 general choice assignment
 ==================
 
-{ f(X):= Y : p(X,Y), not in(X)}.
+{ f(X):= Y : p(X,Y), not in(X) }.
 
 ---
 
