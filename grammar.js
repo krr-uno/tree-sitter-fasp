@@ -32,10 +32,6 @@ module.exports = grammar(clingo, {
 
         _head_assignment: $ => choice($.simple_assignment, $.aggregate_assignment, $.choice_some_assignment, $.choice_assignment),
 
-        head: ($, original) => choice(
-            ...original.members.filter((member) => member.content?.name != 'set_aggregate'),
-        ),
-
         assignment_rule: $ => seq($._head_assignment, choice(".", seq(":-", $.body))),
 
         statement: ($, original) => choice(
