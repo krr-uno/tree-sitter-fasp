@@ -13,3 +13,4 @@ bindings/python/tree_sitter_clingo.egg-info/not-zip-safe
 bindings/python/tree_sitter_clingo.egg-info/requires.txt
 bindings/python/tree_sitter_clingo.egg-info/top_level.txt
 src/parser.c
+src/scanner.c

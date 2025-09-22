@@ -2,8 +2,8 @@ ifeq ($(OS),Windows_NT)
 $(error Windows is not supported)
 endif
 
-LANGUAGE_NAME := tree-sitter-clingo
-HOMEPAGE_URL := https://github.com/potassco/tree-sitter-clingo
+LANGUAGE_NAME := tree-sitter-fasp
+HOMEPAGE_URL := https://github.com/potassco/tree-sitter-fasp
 VERSION := 0.1.0
 
 # repository
@@ -70,7 +70,7 @@ $(PARSER): $(SRC_DIR)/grammar.json
 	$(TS) generate $^
 
 install: all
-	install -d '$(DESTDIR)$(DATADIR)'/tree-sitter/queries/clingo '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter '$(DESTDIR)$(PCLIBDIR)' '$(DESTDIR)$(LIBDIR)'
+	install -d '$(DESTDIR)$(DATADIR)'/tree-sitter/queries/fasp '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter '$(DESTDIR)$(PCLIBDIR)' '$(DESTDIR)$(LIBDIR)'
 	install -m644 bindings/c/tree_sitter/$(LANGUAGE_NAME).h '$(DESTDIR)$(INCLUDEDIR)'/tree_sitter/$(LANGUAGE_NAME).h
 	install -m644 $(LANGUAGE_NAME).pc '$(DESTDIR)$(PCLIBDIR)'/$(LANGUAGE_NAME).pc
 	install -m644 lib$(LANGUAGE_NAME).a '$(DESTDIR)$(LIBDIR)'/lib$(LANGUAGE_NAME).a
@@ -78,7 +78,7 @@ install: all
 	ln -sf lib$(LANGUAGE_NAME).$(SOEXTVER) '$(DESTDIR)$(LIBDIR)'/lib$(LANGUAGE_NAME).$(SOEXTVER_MAJOR)
 	ln -sf lib$(LANGUAGE_NAME).$(SOEXTVER_MAJOR) '$(DESTDIR)$(LIBDIR)'/lib$(LANGUAGE_NAME).$(SOEXT)
 ifneq ($(wildcard queries/*.scm),)
-	install -m644 queries/*.scm '$(DESTDIR)$(DATADIR)'/tree-sitter/queries/clingo
+	install -m644 queries/*.scm '$(DESTDIR)$(DATADIR)'/tree-sitter/queries/fasp
 endif
 
 uninstall:
@@ -88,7 +88,7 @@ uninstall:
 		'$(DESTDIR)$(LIBDIR)'/lib$(LANGUAGE_NAME).$(SOEXT) \
 		'$(DESTDIR)$(INCLUDEDIR)'/tree_sitter/$(LANGUAGE_NAME).h \
 		'$(DESTDIR)$(PCLIBDIR)'/$(LANGUAGE_NAME).pc
-	$(RM) -r '$(DESTDIR)$(DATADIR)'/tree-sitter/queries/clingo
+	$(RM) -r '$(DESTDIR)$(DATADIR)'/tree-sitter/queries/fasp
 
 clean:
 	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT)
