@@ -8,7 +8,7 @@ from setuptools.command.egg_info import egg_info
 from wheel.bdist_wheel import bdist_wheel
 
 sources = [
-    "bindings/python/tree_sitter_clingo/binding.c",
+    "bindings/python/tree_sitter_fasp/binding.c",
     "src/parser.c",
 ]
 if path.exists("src/scanner.c"):
@@ -30,7 +30,7 @@ else:
 class Build(build):
     def run(self):
         if path.isdir("queries"):
-            dest = path.join(self.build_lib, "tree_sitter_clingo", "queries")
+            dest = path.join(self.build_lib, "tree_sitter_fasp", "queries")
             self.copy_tree("queries", dest)
         super().run()
 
@@ -57,7 +57,7 @@ setup(
         "tree_sitter_clingo": ["*.pyi", "py.typed"],
         "tree_sitter_clingo.queries": ["*.scm"],
     },
-    ext_package="tree_sitter_clingo",
+    ext_package="tree_sitter_fasp",
     ext_modules=[
         Extension(
             name="_binding",
