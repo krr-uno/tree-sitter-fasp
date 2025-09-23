@@ -249,10 +249,31 @@ general choice assignment 2
 
 
 ==================
-assignments must be functions
+cannot assign to number
 :error
 ==================
 
 1 := 1.
 
 ---
+
+
+==================
+cannot assign to string
+:error
+==================
+
+"a" := 1.
+
+---
+
+
+==================
+cannot assign to tuple
+:error
+==================
+
+(a,b) := 1.
+
+---
+
