@@ -10,10 +10,10 @@ module.exports = grammar(clingo, {
     ],
     
     rules: {
-        simple_assignment: $ => seq($.term, ":=", $.term),       
+        simple_assignment: $ => seq($.function, ":=", $.term),       
 
-        _aggregate_assignment: $ => seq($.aggregate_function, "{", optional($.body_aggregate_elements), "}"),
-        aggregate_assignment: $ => seq($.term, ":=", $._aggregate_assignment),
+        aggregate_assignment_aggregate: $ => seq($.aggregate_function, "{", optional($.body_aggregate_elements), "}"),
+        aggregate_assignment: $ => seq($.function, ":=", $.aggregate_assignment_aggregate),
 
         _choice_some_assignment: $ => seq("{", $.body_aggregate_elements, "}"),
         choice_some_assignment: $ => seq($.term, "#some", $._choice_some_assignment),

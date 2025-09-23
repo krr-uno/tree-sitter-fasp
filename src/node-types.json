@@ -23,15 +23,30 @@
       "required": true,
       "types": [
         {
+          "type": "aggregate_assignment_aggregate",
+          "named": true
+        },
+        {
+          "type": "function",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "aggregate_assignment_aggregate",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
           "type": "aggregate_function",
           "named": true
         },
         {
           "type": "body_aggregate_elements",
-          "named": true
-        },
-        {
-          "type": "term",
           "named": true
         }
       ]
@@ -1274,6 +1289,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "function",
+          "named": true
+        },
         {
           "type": "term",
           "named": true

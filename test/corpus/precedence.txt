@@ -8,19 +8,19 @@ p(-2+4).
 ---
 
 (source_file
-    (statement
+  (statement
     (rule
-        (head
+      (head
         (literal
-            (symbolic_atom
+          (symbolic_atom
             (identifier)
             (pool
-                (terms
+              (terms
                 (term
-                    (binary
+                  (unary
                     (term
-                        (unary
+                      (binary
                         (term
-                            (number))))
-                    (term
-                        (number))))))))))))
+                          (number))
+                        (term
+                          (number))))))))))))))
