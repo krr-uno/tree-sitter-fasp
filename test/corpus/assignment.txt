@@ -246,3 +246,13 @@ general choice assignment 2
           (relation)
           (term
             (number)))))))
+
+
+==================
+assignments must be functions
+:error
+==================
+
+1 := 1.
+
+---
