@@ -3,11 +3,7 @@ const clingo = require('tree-sitter-clingo/grammar');
 module.exports = grammar(clingo, {
     name: 'fasp',
 
-    externals: $ => [
-        ":-",
-        ":=",
-        ":",
-    ],
+    externals: $ => [$.empty_pool_item_first, $.empty_pool_item, $.colon],
     
     rules: {
         simple_assignment: $ => seq($.function, ":=", $.term),       
@@ -35,7 +31,12 @@ module.exports = grammar(clingo, {
 
         _head_assignment: $ => choice($.simple_assignment, $.aggregate_assignment, $.choice_some_assignment, $.choice_assignment),
 
-        assignment_rule: $ => seq($._head_assignment, choice(".", seq(":-", $.body))),
+        assignment_rule: $ => 
+            seq(
+                field("head", $._head_assignment), 
+                optional(seq(":-", field("body", $.body))), 
+                ".",
+            ),
 
         statement: ($, original) => choice(
             $.assignment_rule,

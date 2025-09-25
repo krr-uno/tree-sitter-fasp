@@ -23,22 +23,18 @@ head :-  body.
 ---
 
 (source_file
-  (statement
-    (rule
-      (head
-        (literal
-          (symbolic_atom
-            (identifier))))))
-  (statement
-    (rule
-      (head
-        (literal
-          (symbolic_atom
-            (identifier))))
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier)))))))
+  (rule
+    (literal
+      (symbolic_atom
+        (identifier))))
+  (rule
+    (literal
+      (symbolic_atom
+        (identifier)))
+    (body
+      (body_literal
+        (symbolic_atom
+          (identifier))))))
 
 ==================
 constraints
@@ -50,15 +46,12 @@ constraints
 ---
 
 (source_file
-  (statement
-    (integrity_constraint
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier))))))
-  (statement
-    (integrity_constraint
-      (body))))
+  (integrity_constraint
+    (body
+      (body_literal
+        (symbolic_atom
+          (identifier)))))
+  (integrity_constraint))
 
 ==================
 weak constraint
@@ -70,32 +63,24 @@ weak constraint
 ---
 
 (source_file
-  (statement
-    (weak_constraint
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier)))
-        (body_literal
-          (symbolic_atom
-            (identifier))))
-      (term
-        (number))
-      (priority
-        (term
-          (number)))
-      (terms
-        (term
-          (number))
-        (term
-          (number))
-        (term
-          (number)))))
-  (statement
-    (weak_constraint
-      (body)
-      (term
-        (number)))))
+  (weak_constraint
+    (body
+      (body_literal
+        (symbolic_atom
+          (identifier)))
+      (body_literal
+        (symbolic_atom
+          (identifier))))
+    (weight
+      (number)
+      (number))
+    (terms
+      (number)
+      (number)
+      (number)))
+  (weak_constraint
+    (weight
+      (number))))
 
 ==================
 minimize
@@ -106,39 +91,35 @@ minimize
 ---
 
 (source_file
-  (statement
-    (minimize
-      (optimize_elements
-        (optimize_element
-          (term
-            (number))
-          (priority
-            (term
-              (number)))
-          (literal_tuple
-            (literal
-              (symbolic_atom
-                (identifier)))))
-        (optimize_element
-          (term
-            (number))
-          (literal_tuple
-            (literal
-              (symbolic_atom
-                (identifier)))))
-        (optimize_element
-          (term
-            (number))
-          (terms
-            (term
-              (number)))
-          (literal_tuple
-            (literal
-              (symbolic_atom
-                (identifier)))
-            (literal
-              (symbolic_atom
-                (identifier)))))))))
+  (minimize
+    (optimize_elements
+      (optimize_element
+        (weight
+          (number)
+          (number))
+        (condition
+          (literal
+            (symbolic_atom
+              (identifier)))))
+      (optimize_element
+        (weight
+          (number))
+        (condition
+          (literal
+            (symbolic_atom
+              (identifier)))))
+      (optimize_element
+        (weight
+          (number))
+        (terms
+          (number))
+        (condition
+          (literal
+            (symbolic_atom
+              (identifier)))
+          (literal
+            (symbolic_atom
+              (identifier))))))))
 
 ==================
 maximize
@@ -149,78 +130,7 @@ maximize
 ---
 
 (source_file
-  (statement
-    (maximize)))
-
-==================
-show
-:skip
-==================
-
-#show.
-#show a/2.
-#show -a/2.
-#show a/2+1.
-#show -p(X) : q(), c(X).
-#show a.
-
----
-
-(source_file
-  (statement
-    (show))
-  (statement
-    (show_signature
-      (signature
-        (identifier)
-        (number))))
-  (statement
-    (show_signature
-      (signature
-        (negative_identifier)
-        (number))))
-  (statement
-    (show_term
-      (term
-        (binary
-          (term
-            (function
-              (identifier)))
-          (term
-            (binary
-              (term
-                (number))
-              (term
-                (number))))))
-      (body)))
-  (statement
-    (show_term
-      (term
-        (function
-          (negative_identifier)
-          (pool
-            (terms
-              (term
-                (variable))))))
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier)
-            (pool
-              (terms))))
-        (body_literal
-          (symbolic_atom
-            (identifier)
-            (pool
-              (terms
-                (term
-                  (variable)))))))))
-  (statement
-    (show_term
-      (term
-        (function
-          (identifier)))
-      (body))))
+  (maximize))
 
 ==================
 defined
@@ -232,16 +142,15 @@ defined
 ---
 
 (source_file
-  (statement
-    (defined
-      (signature
-        (identifier)
-        (number))))
-  (statement
-    (defined
-      (signature
-        (negative_identifier)
-        (number)))))
+  (defined
+    (signature
+      (identifier)
+      (number)))
+  (defined
+    (signature
+      (classical_negation)
+      (identifier)
+      (number))))
 
 ==================
 project
@@ -256,34 +165,28 @@ project
 ---
 
 (source_file
-  (statement
-    (project_signature
-      (signature
-        (identifier)
-        (number))))
-  (statement
-    (project_signature
-      (signature
-        (negative_identifier)
-        (number))))
-  (statement
-    (project_atom
-      (symbolic_atom
-        (identifier))
-      (body)))
-  (statement
-    (project_atom
-      (symbolic_atom
-        (identifier))
-      (body)))
-  (statement
-    (project_atom
-      (symbolic_atom
-        (identifier))
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier)))))))
+  (project_signature
+    (signature
+      (identifier)
+      (number)))
+  (project_signature
+    (signature
+      (classical_negation)
+      (identifier)
+      (number)))
+  (project_atom
+    (symbolic_atom
+      (identifier)))
+  (project_atom
+    (symbolic_atom
+      (identifier)))
+  (project_atom
+    (symbolic_atom
+      (identifier))
+    (body
+      (body_literal
+        (symbolic_atom
+          (identifier))))))
 
 ==================
 const
@@ -297,39 +200,26 @@ const
 ---
 
 (source_file
-  (statement
-    (const
+  (const
+    (identifier)
+    (number))
+  (const
+    (identifier)
+    (function
       (identifier)
-      (term
-        (number))))
-  (statement
-    (const
-      (identifier)
-      (term
-        (function
-          (identifier)
-          (pool
-            (terms
-              (term
-                (tuple
-                  (terms)))
-              (term
-                (abs
-                  (term
-                    (function
-                      (identifier)))))))))))
-  (statement
-    (const
-      (identifier)
-      (term
-        (number))
-      (const_type)))
-  (statement
-    (const
-      (identifier)
-      (term
-        (number))
-      (const_type))))
+      (terms
+        (tuple)
+        (abs
+          (function
+            (identifier))))))
+  (const
+    (identifier)
+    (number)
+    (const_type))
+  (const
+    (identifier)
+    (number)
+    (const_type)))
 
 ==================
 script
@@ -345,10 +235,9 @@ def main(ctl):
 ---
 
 (source_file
-  (statement
-    (script
-      (identifier)
-      (code))))
+  (script
+    (identifier)
+    (code)))
 
 ==================
 include
@@ -360,13 +249,11 @@ include
 ---
 
 (source_file
-  (statement
-    (include
-      (string
-        (string_fragment))))
-  (statement
-    (include
-      (identifier))))
+  (include
+    (string
+      (string_fragment)))
+  (include
+    (identifier)))
 
 ==================
 program
@@ -379,18 +266,15 @@ program
 ---
 
 (source_file
-  (statement
-    (program
-      (identifier)))
-  (statement
-    (program
-      (identifier)))
-  (statement
-    (program
+  (program
+    (identifier))
+  (program
+    (identifier))
+  (program
+    (identifier)
+    (parameters
       (identifier)
-      (identifiers
-        (identifier)
-        (identifier)))))
+      (identifier))))
 
 ==================
 external
@@ -404,42 +288,32 @@ external
 ---
 
 (source_file
-  (statement
-    (external
-      (symbolic_atom
-        (identifier))
-      (body)))
-  (statement
-    (external
-      (symbolic_atom
-        (negative_identifier))
-      (body)))
-  (statement
-    (external
-      (symbolic_atom
-        (identifier))
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier))))))
-  (statement
-    (external
-      (symbolic_atom
-        (identifier)
-        (pool
+  (external
+    (symbolic_atom
+      (identifier)))
+  (external
+    (symbolic_atom
+      (classical_negation)
+      (identifier)))
+  (external
+    (symbolic_atom
+      (identifier))
+    (body
+      (body_literal
+        (symbolic_atom
+          (identifier)))))
+  (external
+    (symbolic_atom
+      (identifier)
+      (terms
+        (variable)))
+    (body
+      (body_literal
+        (symbolic_atom
+          (identifier)
           (terms
-            (term
-              (variable)))))
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier)
-            (pool
-              (terms
-                (term
-                  (variable)))))))
-      (term
-        (variable)))))
+            (variable)))))
+    (variable)))
 
 ==================
 edge
@@ -452,51 +326,38 @@ edge
 ---
 
 (source_file
-  (statement
-    (edge
-      (pool_binary
-        (term
-          (function
-            (identifier)))
-        (term
-          (function
-            (identifier))))
-      (body)))
-  (statement
-    (edge
-      (pool_binary
-        (term
-          (function
-            (identifier)))
-        (term
-          (function
-            (identifier)))
-        (term
-          (function
-            (identifier)))
-        (term
-          (function
-            (identifier))))
-      (body)))
-  (statement
-    (edge
-      (pool_binary
-        (term
-          (function
-            (identifier)))
-        (term
-          (function
-            (identifier)))
-        (term
-          (function
-            (identifier)))
-        (term
-          (function
-            (identifier))))
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier)))))))
+  (edge
+    (edge_pair
+      (function
+        (identifier))
+      (function
+        (identifier))))
+  (edge
+    (edge_pair
+      (function
+        (identifier))
+      (function
+        (identifier)))
+    (edge_pair
+      (function
+        (identifier))
+      (function
+        (identifier))))
+  (edge
+    (edge_pair
+      (function
+        (identifier))
+      (function
+        (identifier)))
+    (edge_pair
+      (function
+        (identifier))
+      (function
+        (identifier)))
+    (body
+      (body_literal
+        (symbolic_atom
+          (identifier))))))
 
 ==================
 heuristic
@@ -509,57 +370,37 @@ heuristic
 ---
 
 (source_file
-  (statement
-    (heuristic
-      (symbolic_atom
-        (identifier)
-        (pool
-          (terms)))
-      (body)
-      (term
-        (function
-          (identifier)))
-      (term
-        (function
-          (identifier)))))
-  (statement
-    (heuristic
-      (symbolic_atom
-        (identifier)
-        (pool
-          (terms)))
-      (body)
-      (term
-        (function
-          (identifier)))
-      (priority
-        (term
-          (number)))
-      (term
-        (function
-          (identifier)))))
-  (statement
-    (heuristic
-      (symbolic_atom
-        (identifier)
-        (pool
+  (heuristic
+    (symbolic_atom
+      (identifier))
+    (weight
+      (function
+        (identifier)))
+    (function
+      (identifier)))
+  (heuristic
+    (symbolic_atom
+      (identifier))
+    (weight
+      (function
+        (identifier))
+      (number))
+    (function
+      (identifier)))
+  (heuristic
+    (symbolic_atom
+      (identifier)
+      (terms
+        (variable)))
+    (body
+      (body_literal
+        (symbolic_atom
+          (identifier)
           (terms
-            (term
-              (variable)))))
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier)
-            (pool
-              (terms
-                (term
-                  (variable)))))))
-      (term
-        (function
-          (identifier)))
-      (priority
-        (term
-          (variable)))
-      (term
-        (function
-          (identifier))))))
+            (variable)))))
+    (weight
+      (function
+        (identifier))
+      (variable))
+    (function
+      (identifier))))

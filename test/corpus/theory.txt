@@ -7,15 +7,12 @@ theory guard
 ---
 
 (source_file
-  (statement
-    (rule
-      (head
-        (theory_atom
-          (theory_atom_name
-            (identifier))
-          (operator)
-          (theory_term
-            (number)))))))
+  (rule
+    (theory_atom
+      (identifier)
+      (theory_atom_upper
+        (theory_operator)
+        (number)))))
 
 ==================
 theory elements
@@ -26,45 +23,36 @@ theory elements
 ---
 
 (source_file
-  (statement
-    (rule
-      (head
-        (theory_atom
-          (theory_atom_name
-            (identifier))
-          (theory_elements
-            (theory_element)
-            (theory_element
-              (theory_terms
-                (theory_term
-                  (number))))
-            (theory_element
-              (theory_terms
-                (theory_term
-                  (number))
-                (theory_term
-                  (number))))
-            (theory_element
-              (theory_terms
-                (theory_term
-                  (number)))
-              (literal_tuple
-                (literal
-                  (symbolic_atom
-                    (identifier)))
-                (literal
-                  (symbolic_atom
-                    (identifier)))))
-            (theory_element
-              (theory_terms
-                (theory_term
-                  (number))
-                (theory_term
-                  (number)))
-              (literal_tuple
-                (literal
-                  (symbolic_atom
-                    (identifier)))))))))))
+  (rule
+    (theory_atom
+      (identifier)
+      (theory_elements
+        (theory_element)
+        (theory_element
+          (theory_terms
+            (number)))
+        (theory_element
+          (theory_terms
+            (number)
+            (number)))
+        (theory_element
+          (theory_terms
+            (number))
+          (condition
+            (literal
+              (symbolic_atom
+                (identifier)))
+            (literal
+              (symbolic_atom
+                (identifier)))))
+        (theory_element
+          (theory_terms
+            (number)
+            (number))
+          (condition
+            (literal
+              (symbolic_atom
+                (identifier)))))))))
 
 ==================
 theory tuple
@@ -75,49 +63,40 @@ theory tuple
 ---
 
 (source_file
-  (statement
-    (rule
-      (head
-        (theory_atom
-          (theory_atom_name
-            (identifier))
-          (theory_elements
-            (theory_element
+  (rule
+    (theory_atom
+      (identifier)
+      (theory_elements
+        (theory_element
+          (theory_terms
+            (theory_tuple)))
+        (theory_element
+          (theory_terms
+            (theory_tuple
               (theory_terms
-                (theory_term
-                  (theory_tuple))))
-            (theory_element
+                (lone_comma)))))
+        (theory_element
+          (theory_terms
+            (theory_tuple
               (theory_terms
-                (theory_term
-                  (theory_tuple))))
-            (theory_element
+                (number)))))
+        (theory_element
+          (theory_terms
+            (theory_tuple
               (theory_terms
-                (theory_term
-                  (theory_tuple
-                    (theory_term
-                      (number))))))
-            (theory_element
+                (number)))))
+        (theory_element
+          (theory_terms
+            (theory_tuple
               (theory_terms
-                (theory_term
-                  (theory_tuple
-                    (theory_term
-                      (number))))))
-            (theory_element
+                (number)
+                (number)))))
+        (theory_element
+          (theory_terms
+            (theory_tuple
               (theory_terms
-                (theory_term
-                  (theory_tuple
-                    (theory_term
-                      (number))
-                    (theory_term
-                      (number))))))
-            (theory_element
-              (theory_terms
-                (theory_term
-                  (theory_tuple
-                    (theory_term
-                      (number))
-                    (theory_term
-                      (number))))))))))))
+                (number)
+                (number)))))))))
 
 ==================
 theory list
@@ -128,31 +107,24 @@ theory list
 ---
 
 (source_file
-  (statement
-    (rule
-      (head
-        (theory_atom
-          (theory_atom_name
-            (identifier))
-          (theory_elements
-            (theory_element
+  (rule
+    (theory_atom
+      (identifier)
+      (theory_elements
+        (theory_element
+          (theory_terms
+            (theory_list)))
+        (theory_element
+          (theory_terms
+            (theory_list
               (theory_terms
-                (theory_term
-                  (theory_list))))
-            (theory_element
+                (number)))))
+        (theory_element
+          (theory_terms
+            (theory_list
               (theory_terms
-                (theory_term
-                  (theory_list
-                    (theory_term
-                      (number))))))
-            (theory_element
-              (theory_terms
-                (theory_term
-                  (theory_list
-                    (theory_term
-                      (number))
-                    (theory_term
-                      (number))))))))))))
+                (number)
+                (number)))))))))
 
 ==================
 theory set
@@ -163,31 +135,24 @@ theory set
 ---
 
 (source_file
-  (statement
-    (rule
-      (head
-        (theory_atom
-          (theory_atom_name
-            (identifier))
-          (theory_elements
-            (theory_element
+  (rule
+    (theory_atom
+      (identifier)
+      (theory_elements
+        (theory_element
+          (theory_terms
+            (theory_set)))
+        (theory_element
+          (theory_terms
+            (theory_set
               (theory_terms
-                (theory_term
-                  (theory_set))))
-            (theory_element
+                (number)))))
+        (theory_element
+          (theory_terms
+            (theory_set
               (theory_terms
-                (theory_term
-                  (theory_set
-                    (theory_term
-                      (number))))))
-            (theory_element
-              (theory_terms
-                (theory_term
-                  (theory_set
-                    (theory_term
-                      (number))
-                    (theory_term
-                      (number))))))))))))
+                (number)
+                (number)))))))))
 
 ==================
 theory function
@@ -198,35 +163,25 @@ theory function
 ---
 
 (source_file
-  (statement
-    (rule
-      (head
-        (theory_atom
-          (theory_atom_name
-            (identifier))
-          (theory_elements
-            (theory_element
+  (rule
+    (theory_atom
+      (identifier)
+      (theory_elements
+        (theory_element
+          (theory_terms
+            (theory_function
+              (identifier))
+            (theory_function
+              (identifier))
+            (theory_function
+              (identifier)
               (theory_terms
-                (theory_term
-                  (theory_function
-                    (identifier)))
-                (theory_term
-                  (theory_function
-                    (identifier)))
-                (theory_term
-                  (theory_function
-                    (identifier)
-                    (theory_terms
-                      (theory_term
-                        (number)))))
-                (theory_term
-                  (theory_function
-                    (identifier)
-                    (theory_terms
-                      (theory_term
-                        (number))
-                      (theory_term
-                        (number)))))))))))))
+                (number)))
+            (theory_function
+              (identifier)
+              (theory_terms
+                (number)
+                (number)))))))))
 
 ==================
 theory terms
@@ -237,28 +192,19 @@ theory terms
 ---
 
 (source_file
-  (statement
-    (rule
-      (head
-        (theory_atom
-          (theory_atom_name
-            (identifier))
-          (theory_elements
-            (theory_element
-              (theory_terms
-                (theory_term
-                  (number))
-                (theory_term
-                  (supremum))
-                (theory_term
-                  (infimum))
-                (theory_term
-                  (string
-                    (string_fragment)))
-                (theory_term
-                  (variable))
-                (theory_term
-                  (anonymous))))))))))
+  (rule
+    (theory_atom
+      (identifier)
+      (theory_elements
+        (theory_element
+          (theory_terms
+            (number)
+            (supremum)
+            (infimum)
+            (string
+              (string_fragment))
+            (variable)
+            (anonymous)))))))
 
 ==================
 theory unparsed
@@ -269,50 +215,37 @@ theory unparsed
 ---
 
 (source_file
-  (statement
-    (rule
-      (head
-        (theory_atom
-          (theory_atom_name
-            (identifier))
-          (theory_elements
-            (theory_element
-              (theory_terms
-                (theory_term
-                  (theory_unparsed_term
-                    (operators
-                      (operator))
-                    (theory_term
-                      (number))))
-                (theory_term
-                  (theory_unparsed_term
-                    (operators
-                      (operator))
-                    (theory_term
-                      (number))
-                    (operators
-                      (operator))
-                    (theory_term
-                      (theory_function
-                        (identifier)
-                        (theory_terms
-                          (theory_term
-                            (number)))))))
-                (theory_term
-                  (theory_unparsed_term
-                    (operators
-                      (operator)
-                      (operator))
-                    (theory_term
-                      (number))
-                    (operators
-                      (operator))
-                    (theory_term
-                      (number))
-                    (operators
-                      (operator))
-                    (theory_term
-                      (number))))))))))))
+  (rule
+    (theory_atom
+      (identifier)
+      (theory_elements
+        (theory_element
+          (theory_terms
+            (theory_unparsed_term
+              (theory_operators
+                (theory_operator))
+              (number))
+            (theory_unparsed_term
+              (theory_operators
+                (theory_operator))
+              (number)
+              (theory_operators
+                (theory_operator))
+              (theory_function
+                (identifier)
+                (theory_terms
+                  (number))))
+            (theory_unparsed_term
+              (theory_operators
+                (theory_operator)
+                (theory_operator))
+              (number)
+              (theory_operators
+                (theory_operator))
+              (number)
+              (theory_operators
+                (theory_operator))
+              (number))))))))
 
 ==================
 theory definition
@@ -333,43 +266,42 @@ theory definition
 ---
 
 (source_file
-  (statement
-    (theory
+  (theory
+    (identifier)
+    (theory_term_definition
       (identifier)
-      (theory_term_definition
-        (identifier)
-        (theory_operator_definitions
-          (theory_operator_definition
-            (operator)
-            (number)
-            (theory_operator_arity)
-            (theory_operator_associativity))
-          (theory_operator_definition
-            (operator)
-            (number)
-            (theory_operator_arity)
-            (theory_operator_associativity))
-          (theory_operator_definition
-            (operator)
-            (number)
-            (theory_operator_arity))))
-      (theory_term_definition
-        (identifier))
-      (theory_atom_definition
-        (identifier)
-        (number)
-        (identifier)
-        (theory_atom_type))
-      (theory_atom_definition
-        (identifier)
-        (number)
-        (identifier)
-        (operators
-          (operator)
-          (operator)
-          (operator)
-          (operator)
-          (operator)
-          (operator))
-        (identifier)
-        (theory_atom_type)))))
+      (theory_operator_definitions
+        (theory_operator_definition
+          (theory_operator)
+          (number)
+          (theory_operator_arity)
+          (theory_operator_associativity))
+        (theory_operator_definition
+          (theory_operator)
+          (number)
+          (theory_operator_arity)
+          (theory_operator_associativity))
+        (theory_operator_definition
+          (theory_operator)
+          (number)
+          (theory_operator_arity))))
+    (theory_term_definition
+      (identifier))
+    (theory_atom_definition
+      (identifier)
+      (number)
+      (identifier)
+      (theory_atom_type))
+    (theory_atom_definition
+      (identifier)
+      (number)
+      (identifier)
+      (theory_operators
+        (theory_operator)
+        (theory_operator)
+        (theory_operator)
+        (theory_operator)
+        (theory_operator)
+        (theory_operator))
+      (identifier)
+      (theory_atom_type))))

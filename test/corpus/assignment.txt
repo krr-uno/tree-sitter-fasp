@@ -7,13 +7,11 @@ a := 1.
 ---
 
 (source_file
-  (statement
-    (assignment_rule
-      (simple_assignment
-        (function
-          (identifier))
-        (term
-          (number))))))
+  (assignment_rule
+    (simple_assignment
+      (function
+        (identifier))
+      (number))))
 
 ==================
 basic assignment rule
@@ -24,30 +22,22 @@ a(X) := f(Y) :- b(X).
 ---
 
 (source_file
-  (statement
-    (assignment_rule
-      (simple_assignment
-        (function
+  (assignment_rule
+    (simple_assignment
+      (function
+        (identifier)
+        (terms
+          (variable)))
+      (function
+        (identifier)
+        (terms
+          (variable))))
+    (body
+      (body_literal
+        (symbolic_atom
           (identifier)
-          (pool
-            (terms
-              (term
-                (variable)))))
-        (term
-          (function
-            (identifier)
-            (pool
-              (terms
-                (term
-                  (variable)))))))
-      (body
-        (body_literal
-          (symbolic_atom
-            (identifier)
-            (pool
-              (terms
-                (term
-                  (variable))))))))))
+          (terms
+            (variable)))))))
 
 ==================
 aggregate assignment
@@ -58,46 +48,35 @@ a := #sum {X,Y: p(X,Y), q(X), not r(Y)}.
 ---
 
 (source_file
-  (statement
-    (assignment_rule
-      (aggregate_assignment
-        (function
-          (identifier))
-        (aggregate_assignment_aggregate
-          (aggregate_function)
-          (body_aggregate_elements
-            (body_aggregate_element
-              (terms
-                (term
-                  (variable))
-                (term
-                  (variable)))
-              (literal_tuple
-                (literal
-                  (symbolic_atom
-                    (identifier)
-                    (pool
-                      (terms
-                        (term
-                          (variable))
-                        (term
-                          (variable))))))
-                (literal
-                  (symbolic_atom
-                    (identifier)
-                    (pool
-                      (terms
-                        (term
-                          (variable))))))
-                (literal
-                  (sign
-                    (default_negation))
-                  (symbolic_atom
-                    (identifier)
-                    (pool
-                      (terms
-                        (term
-                          (variable))))))))))))))
+  (assignment_rule
+    (aggregate_assignment
+      (function
+        (identifier))
+      (aggregate_assignment_aggregate
+        (aggregate_function)
+        (body_aggregate_elements
+          (body_aggregate_element
+            (terms
+              (variable)
+              (variable))
+            (condition
+              (literal
+                (symbolic_atom
+                  (identifier)
+                  (terms
+                    (variable)
+                    (variable))))
+              (literal
+                (symbolic_atom
+                  (identifier)
+                  (terms
+                    (variable))))
+              (literal
+                (default_negation)
+                (symbolic_atom
+                  (identifier)
+                  (terms
+                    (variable)))))))))))
 
 ==================
 choice assignment
@@ -108,38 +87,28 @@ a #some{X,Y: p(X,Y), not in(X)}.
 ---
 
 (source_file
-  (statement
-    (assignment_rule
-      (choice_some_assignment
-        (term
-          (function
-            (identifier)))
-        (body_aggregate_elements
-          (body_aggregate_element
-            (terms
-              (term
-                (variable))
-              (term
-                (variable)))
-            (literal_tuple
-              (literal
-                (symbolic_atom
-                  (identifier)
-                  (pool
-                    (terms
-                      (term
-                        (variable))
-                      (term
-                        (variable))))))
-              (literal
-                (sign
-                  (default_negation))
-                (symbolic_atom
-                  (identifier)
-                  (pool
-                    (terms
-                      (term
-                        (variable)))))))))))))
+  (assignment_rule
+    (choice_some_assignment
+      (function
+        (identifier))
+      (body_aggregate_elements
+        (body_aggregate_element
+          (terms
+            (variable)
+            (variable))
+          (condition
+            (literal
+              (symbolic_atom
+                (identifier)
+                (terms
+                  (variable)
+                  (variable))))
+            (literal
+              (default_negation)
+              (symbolic_atom
+                (identifier)
+                (terms
+                  (variable))))))))))
 
 ==================
 general choice assignment
@@ -150,39 +119,29 @@ general choice assignment
 ---
 
 (source_file
-  (statement
-    (assignment_rule
-      (choice_assignment
-        (choice_assignment_elements
-          (choice_assignment_element
-            (simple_assignment
-              (function
-                (identifier)
-                (pool
-                  (terms
-                    (term
-                      (variable)))))
-              (term
+  (assignment_rule
+    (choice_assignment
+      (choice_assignment_elements
+        (choice_assignment_element
+          (simple_assignment
+            (function
+              (identifier)
+              (terms
                 (variable)))
-            (literal_tuple
-              (literal
-                (symbolic_atom
-                  (identifier)
-                  (pool
-                    (terms
-                      (term
-                        (variable))
-                      (term
-                        (variable))))))
-              (literal
-                (sign
-                  (default_negation))
-                (symbolic_atom
-                  (identifier)
-                  (pool
-                    (terms
-                      (term
-                        (variable)))))))))))))
+            (variable))
+          (condition
+            (literal
+              (symbolic_atom
+                (identifier)
+                (terms
+                  (variable)
+                  (variable))))
+            (literal
+              (default_negation)
+              (symbolic_atom
+                (identifier)
+                (terms
+                  (variable))))))))))
 
 ==================
 general choice assignment 2
@@ -193,60 +152,44 @@ general choice assignment 2
 ---
 
 (source_file
-  (statement
-    (assignment_rule
-      (choice_assignment
-        (choice_assignment_elements
-          (choice_assignment_element
-            (simple_assignment
-              (function
-                (identifier)
-                (pool
-                  (terms
-                    (term
-                      (variable)))))
-              (term
+  (assignment_rule
+    (choice_assignment
+      (choice_assignment_elements
+        (choice_assignment_element
+          (simple_assignment
+            (function
+              (identifier)
+              (terms
                 (variable)))
-            (literal_tuple
-              (literal
-                (symbolic_atom
-                  (identifier)
-                  (pool
-                    (terms
-                      (term
-                        (variable))
-                      (term
-                        (variable))))))
-              (literal
-                (sign
-                  (default_negation))
-                (symbolic_atom
-                  (identifier)
-                  (pool
-                    (terms
-                      (term
-                        (variable))))))))
-          (set_aggregate_element
+            (variable))
+          (condition
             (literal
               (symbolic_atom
                 (identifier)
-                (pool
-                  (terms
-                    (term
-                      (variable))))))
-            (literal_tuple
-              (literal
-                (symbolic_atom
-                  (identifier)
-                  (pool
-                    (terms
-                      (term
-                        (variable)))))))))
-        (upper
-          (relation)
-          (term
-            (number)))))))
-
+                (terms
+                  (variable)
+                  (variable))))
+            (literal
+              (default_negation)
+              (symbolic_atom
+                (identifier)
+                (terms
+                  (variable))))))
+        (set_aggregate_element
+          (literal
+            (symbolic_atom
+              (identifier)
+              (terms
+                (variable))))
+          (condition
+            (literal
+              (symbolic_atom
+                (identifier)
+                (terms
+                  (variable)))))))
+      (upper
+        (relation)
+        (number)))))
 
 ==================
 cannot assign to number
@@ -256,6 +199,7 @@ cannot assign to number
 1 := 1.
 
 ---
+
 
 
 ==================
@@ -268,6 +212,7 @@ cannot assign to string
 ---
 
 
+
 ==================
 cannot assign to tuple
 :error
@@ -276,4 +221,5 @@ cannot assign to tuple
 (a,b) := 1.
 
 ---
+
 
