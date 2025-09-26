@@ -26,8 +26,14 @@ module.exports = grammar(clingo, {
             $.set_aggregate_element
         )),
         choice_assignment_elements: $ => seq($._choice_assignment_element, repeat(seq(";", $._choice_assignment_element))),
-        _choice_assignment: $ => seq("{", $.choice_assignment_elements, "}"),
-        choice_assignment: $ => seq(optional($.lower), $._choice_assignment, optional($.upper)),
+        choice_assignment: $ => seq(
+            optional(field("left", $.lower)), 
+            "{", 
+            // The elements field is not optional here. If no elements are present, it should be parsed as an empty clingo choice
+            field("elements", $.choice_assignment_elements),
+            "}", 
+            optional(field("right", $.upper))
+        ),
 
         _head_assignment: $ => choice($.simple_assignment, $.aggregate_assignment, $.choice_some_assignment, $.choice_assignment),
 
