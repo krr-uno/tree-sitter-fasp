@@ -82,7 +82,7 @@ a := #sum {X,Y: p(X,Y), q(X), not r(Y)}.
 choice assignment
 ==================
 
-a #some{X,Y: p(X,Y), not in(X)}.
+a := #some{X,Y: p(X,Y), not in(X)}.
 
 ---
 

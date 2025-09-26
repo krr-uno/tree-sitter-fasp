@@ -11,8 +11,14 @@ module.exports = grammar(clingo, {
         aggregate_assignment_aggregate: $ => seq($.aggregate_function, "{", optional($.body_aggregate_elements), "}"),
         aggregate_assignment: $ => seq($.function, ":=", $.aggregate_assignment_aggregate),
 
-        _choice_some_assignment: $ => seq("{", $.body_aggregate_elements, "}"),
-        choice_some_assignment: $ => seq($.term, "#some", $._choice_some_assignment),
+        choice_some_assignment: $ => seq(
+            field("assigned_function", $.function),
+            ":=",
+            "#some", 
+            "{", 
+            field("elements", $.body_aggregate_elements),
+            "}",
+        ),
 
         choice_assignment_element: $ => seq(
             field("assignment", $.simple_assignment),

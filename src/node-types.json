@@ -674,20 +674,27 @@
   {
     "type": "choice_some_assignment",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "body_aggregate_elements",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        }
-      ]
+    "fields": {
+      "assigned_function": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "function",
+            "named": true
+          }
+        ]
+      },
+      "elements": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "body_aggregate_elements",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
