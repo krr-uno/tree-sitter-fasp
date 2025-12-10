@@ -223,3 +223,54 @@ cannot assign to tuple
 ---
 
 
+
+==================
+head aggregate assignment
+==================
+
+#count{ f(X,Y) : f(X) := Y : p(X,Y), not in(X); p(X) : p(X) }.
+
+---
+
+(source_file
+  (assignment_rule
+    (head_aggregate_assignment
+      (aggregate_function)
+      (head_aggregate_assignment_elements
+        (head_aggregate_assignment_element
+          (terms
+            (function
+              (identifier)
+              (terms
+                (variable)
+                (variable))))
+          (simple_assignment
+            (function
+              (identifier)
+              (terms
+                (variable)))
+            (variable))
+          (condition
+            (literal
+              (symbolic_atom
+                (identifier)
+                (terms
+                  (variable)
+                  (variable))))
+            (literal
+              (default_negation)
+              (symbolic_atom
+                (identifier)
+                (terms
+                  (variable))))))
+        (head_aggregate_element
+          (terms
+            (function
+              (identifier)
+              (terms
+                (variable))))
+          (literal
+            (symbolic_atom
+              (identifier)
+              (terms
+                (variable)))))))))

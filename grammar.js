@@ -41,7 +41,33 @@ module.exports = grammar(clingo, {
             optional(field("right", $.upper))
         ),
 
-        _head_assignment: $ => choice($.simple_assignment, $.aggregate_assignment, $.choice_some_assignment, $.choice_assignment),
+        head_aggregate_assignment_element: ($) =>
+        seq(
+            optional(field("terms", $.terms)),
+            alias($.colon, ":"),
+            field("assignment", $.simple_assignment),
+            optional(field("condition", $._condition)),
+        ),
+
+        _head_aggregate_assignment_element : $ => prec(-1,choice(
+            $.head_aggregate_assignment_element,
+            $.head_aggregate_element
+        )),
+
+        head_aggregate_assignment_elements: ($) =>
+            seq($._head_aggregate_assignment_element, repeat(seq(";", $._head_aggregate_assignment_element))),
+
+        head_aggregate_assignment: ($) =>
+        seq(
+            optional(field("left", $.lower)),
+            field("function", $.aggregate_function),
+            "{",
+            field("elements", $.head_aggregate_assignment_elements),
+            "}",
+            optional(field("right", $.upper)),
+        ),
+
+        _head_assignment: $ => choice($.simple_assignment, $.aggregate_assignment, $.choice_some_assignment, $.choice_assignment, $.head_aggregate_assignment),
 
         assignment_rule: $ => 
             seq(

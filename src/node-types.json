@@ -359,6 +359,10 @@
             "named": true
           },
           {
+            "type": "head_aggregate_assignment",
+            "named": true
+          },
+          {
             "type": "simple_assignment",
             "named": true
           }
@@ -1053,6 +1057,111 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "head_aggregate_assignment",
+    "named": true,
+    "fields": {
+      "elements": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "head_aggregate_assignment_elements",
+            "named": true
+          }
+        ]
+      },
+      "function": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "aggregate_function",
+            "named": true
+          }
+        ]
+      },
+      "left": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "lower",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "upper",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "head_aggregate_assignment_element",
+    "named": true,
+    "fields": {
+      "assignment": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "simple_assignment",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "condition",
+            "named": true
+          }
+        ]
+      },
+      "terms": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "terms",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "head_aggregate_assignment_elements",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "head_aggregate_assignment_element",
+          "named": true
+        },
+        {
+          "type": "head_aggregate_element",
+          "named": true
+        }
+      ]
     }
   },
   {
