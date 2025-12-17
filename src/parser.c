@@ -21,7 +21,7 @@
 #define ALIAS_COUNT 2
 #define TOKEN_COUNT 72
 #define EXTERNAL_TOKEN_COUNT 3
-#define FIELD_COUNT 33
+#define FIELD_COUNT 34
 #define MAX_ALIAS_SEQUENCE_LENGTH 14
 #define MAX_RESERVED_WORD_SET_SIZE 0
 #define PRODUCTION_ID_COUNT 123
@@ -1541,29 +1541,30 @@ enum ts_field_identifiers {
   field_body = 8,
   field_code = 9,
   field_condition = 10,
-  field_edge_pair = 11,
-  field_elements = 12,
-  field_function = 13,
-  field_guard = 14,
-  field_head = 15,
-  field_language = 16,
-  field_left = 17,
-  field_literal = 18,
-  field_name = 19,
-  field_operator = 20,
-  field_operators = 21,
-  field_parameters = 22,
-  field_priority = 23,
-  field_right = 24,
-  field_sign = 25,
-  field_signature = 26,
-  field_term = 27,
-  field_terms = 28,
-  field_theory_term_name = 29,
-  field_theory_terms = 30,
-  field_type = 31,
-  field_value = 32,
-  field_weight = 33,
+  field_condition2 = 11,
+  field_edge_pair = 12,
+  field_elements = 13,
+  field_function = 14,
+  field_guard = 15,
+  field_head = 16,
+  field_language = 17,
+  field_left = 18,
+  field_literal = 19,
+  field_name = 20,
+  field_operator = 21,
+  field_operators = 22,
+  field_parameters = 23,
+  field_priority = 24,
+  field_right = 25,
+  field_sign = 26,
+  field_signature = 27,
+  field_term = 28,
+  field_terms = 29,
+  field_theory_term_name = 30,
+  field_theory_terms = 31,
+  field_type = 32,
+  field_value = 33,
+  field_weight = 34,
 };
 
 static const char * const ts_field_names[] = {
@@ -1578,6 +1579,7 @@ static const char * const ts_field_names[] = {
   [field_body] = "body",
   [field_code] = "code",
   [field_condition] = "condition",
+  [field_condition2] = "condition2",
   [field_edge_pair] = "edge_pair",
   [field_elements] = "elements",
   [field_function] = "function",
@@ -1879,7 +1881,7 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_literal, 1},
   [96] =
     {field_assignment, 1},
-    {field_condition, 2},
+    {field_condition2, 2},
   [98] =
     {field_literal, 2},
     {field_terms, 0},
@@ -1967,15 +1969,15 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_literal, 1},
   [158] =
     {field_assignment, 1},
-    {field_condition, 2},
-    {field_condition, 3},
+    {field_condition2, 2},
+    {field_condition2, 3},
   [161] =
     {field_condition, 3},
     {field_literal, 2},
     {field_terms, 0},
   [164] =
     {field_assignment, 2},
-    {field_condition, 3},
+    {field_condition2, 3},
     {field_terms, 0},
   [167] =
     {field_condition, 1},
@@ -2019,8 +2021,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_terms, 0},
   [197] =
     {field_assignment, 2},
-    {field_condition, 3},
-    {field_condition, 4},
+    {field_condition2, 3},
+    {field_condition2, 4},
     {field_terms, 0},
   [201] =
     {field_terms, 4},
