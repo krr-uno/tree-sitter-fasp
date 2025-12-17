@@ -46,7 +46,7 @@ module.exports = grammar(clingo, {
             optional(field("terms", $.terms)),
             alias($.colon, ":"),
             field("assignment", $.simple_assignment),
-            field("condition2", optional($._condition)),
+            optional(field("condition", $._condition)),
         ),
 
         _head_aggregate_assignment_element : $ => prec(-1,choice(

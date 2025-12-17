@@ -5041,20 +5041,20 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "condition2",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "condition",
+              "content": {
                 "type": "SYMBOL",
                 "name": "_condition"
-              },
-              {
-                "type": "BLANK"
               }
-            ]
-          }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

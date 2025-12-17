@@ -1120,16 +1120,6 @@
         ]
       },
       "condition": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "condition",
-            "named": true
-          }
-        ]
-      },
-      "condition2": {
         "multiple": true,
         "required": false,
         "types": [
