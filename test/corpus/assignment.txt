@@ -314,3 +314,17 @@ head aggregate assignment2
       (upper
         (relation)
         (number)))))
+
+==================
+showf
+==================
+
+#showf f/2.
+
+---
+
+(source_file
+  (show_function_signature
+    (signature
+      (identifier)
+      (number))))

@@ -126,6 +126,10 @@
         "named": true
       },
       {
+        "type": "show_function_signature",
+        "named": true
+      },
+      {
         "type": "show_signature",
         "named": true
       },
@@ -1658,6 +1662,22 @@
     "fields": {}
   },
   {
+    "type": "show_function_signature",
+    "named": true,
+    "fields": {
+      "signature": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "signature",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "show_signature",
     "named": true,
     "fields": {
@@ -2522,6 +2542,10 @@
   },
   {
     "type": "#show",
+    "named": false
+  },
+  {
+    "type": "#showf",
     "named": false
   },
   {
