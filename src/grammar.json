@@ -4704,7 +4704,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "show_function_signature"
+          "name": "showf"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "showf_signature"
         },
         {
           "type": "SYMBOL",
@@ -5232,7 +5236,20 @@
         }
       ]
     },
-    "show_function_signature": {
+    "showf": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#showf"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        }
+      ]
+    },
+    "showf_signature": {
       "type": "SEQ",
       "members": [
         {

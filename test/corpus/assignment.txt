@@ -316,7 +316,18 @@ head aggregate assignment2
         (number)))))
 
 ==================
-showf
+showf1
+==================
+
+#showf.
+
+---
+
+(source_file
+  (showf))
+
+==================
+showf2
 ==================
 
 #showf f/2.
@@ -324,7 +335,7 @@ showf
 ---
 
 (source_file
-  (show_function_signature
+  (showf_signature
     (signature
       (identifier)
       (number))))
