@@ -315,16 +315,6 @@ head aggregate assignment2
         (relation)
         (number)))))
 
-==================
-showf1
-==================
-
-#showf.
-
----
-
-(source_file
-  (showf))
 
 ==================
 showf2

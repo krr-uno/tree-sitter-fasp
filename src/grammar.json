@@ -4704,10 +4704,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "showf"
-        },
-        {
-          "type": "SYMBOL",
           "name": "showf_signature"
         },
         {
@@ -5229,19 +5225,6 @@
               "type": "BLANK"
             }
           ]
-        },
-        {
-          "type": "STRING",
-          "value": "."
-        }
-      ]
-    },
-    "showf": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "#showf"
         },
         {
           "type": "STRING",

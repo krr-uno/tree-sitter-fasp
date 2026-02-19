@@ -76,13 +76,13 @@ module.exports = grammar(clingo, {
                 ".",
             ),
 
-        showf: ($) => seq("#showf", "."),
+        // showf: ($) => seq("#showf", "."),
 
         showf_signature: ($) => seq("#showf", field("signature", $.signature), "."),
 
         statement: ($, original) => choice(
             $.assignment_rule,
-            $.showf,
+            // $.showf,
             $.showf_signature,
             ...original.members,
         ),

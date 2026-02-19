@@ -134,10 +134,6 @@
         "named": true
       },
       {
-        "type": "showf",
-        "named": true
-      },
-      {
         "type": "showf_signature",
         "named": true
       },
@@ -1706,11 +1702,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "showf",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "showf_signature",
